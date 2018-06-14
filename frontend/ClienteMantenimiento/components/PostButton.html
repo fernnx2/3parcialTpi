@@ -1,0 +1,35 @@
+<html>  
+     
+             
+    <script>
+    class FormSolicitud extends HTMLElement{
+            constructor(){
+                super();
+                this.importDocument = document.currentScript.ownerDocument;
+                this.addEventListener('click',e=>{
+                 this.getData();
+                });
+            }
+         
+            connectedCallback(){
+            let shadowDom = this.attachShadow({mode: 'open'});
+               let btn = document.createElement('button');
+               let value = document.createTextNode('Enviar Solicitud');
+               
+               btn.setAttribute('class',"ui button");
+               btn.setAttribute("id","enviar");
+               btn.appendChild(value);
+              
+            const instance = btn.cloneNode(true);
+               shadowDom.appendChild(instance);
+               
+            }
+
+        
+            
+        }
+          
+        
+        window.customElements.define('post-solicitud',FormSolicitud);
+        </script>
+        </html>

@@ -1,0 +1,139 @@
+<html>
+<template>
+    <slot name = "text"></slot>
+    
+    <table>
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+    <style>
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 15px;   
+            width: 100%; text-align: left;    
+            border-collapse: collapse; }
+           
+
+        th {     
+            font-size: 18px;     
+            font-weight: normal;     
+            padding: 8px;     
+            background: #b9c9fe;
+            border-top: 4px solid #aabcfe;    
+            border-bottom: 1px solid #fff; 
+            color: #039; }
+
+        td {    
+            padding: 8px;     
+            background: #e8edff;     
+            border-bottom: 1px solid #fff;
+            color: #669;    
+            border-top: 1px solid transparent; }
+
+        tr:hover td { 
+            background: #d0dafd; 
+            color: #339; }
+    </style>
+</template>
+
+<script>
+
+class TablaDinamica extends HTMLElement{
+    constructor(){
+        super();
+
+        }
+
+      
+    connectedCallback(){
+        this.start();
+     }
+
+
+
+    start(){
+        let importDocument = document.currentScript.ownerDocument;
+        let shadowDom = this.attachShadow({mode:'open'});
+        var datajson = [];
+
+        let generarTabla = function(data){
+            for (let x in data) {
+            var row = importDocument.createElement('tr');
+            for (let y in data[x]){
+            if(x==0){
+        let celda = importDocument.createElement('th');
+        let texto = importDocument.createTextNode(y);
+        celda.contentEditable = 'true';
+        celda.appendChild(texto);
+        row.appendChild(celda);
+        let template = importDocument.querySelector('template').content;
+        let thead = template.querySelector('table').querySelector('thead');
+        thead.appendChild(row); 
+            }
+        }
+        } 
+
+        for(let i=0; i<data.length; i++){
+            let hilera = importDocument.createElement('tr'); //crea las hileras de la tabla
+            let array = getArray(data[i]);
+            
+            for(let j =0; j< col(data); j++){
+               
+            let celda = importDocument.createElement('td');
+            let texto = importDocument.createTextNode(array[j]);
+            celda.contentEditable = "true";
+            celda.appendChild(texto);
+            hilera.appendChild(celda);  
+            }
+            let template =importDocument.querySelector('template').content;
+            let tbody = template.querySelector('table').querySelector('tbody');
+            tbody.appendChild(hilera);
+            
+        }
+            var templeteFinal = importDocument.querySelector('template').content;
+            const clone= templeteFinal.cloneNode(true);
+            shadowDom.appendChild(clone);
+        }
+        
+        
+
+        let col = function(data){
+            let col = data[0];
+            let columnas = new Array();
+            for(let i in col){columnas.push(col[i]);}
+            return columnas.length;
+        }
+
+        let getArray = function(json){
+            let array = new Array();
+            for(let i in json){array.push(json[i]);}
+            return array;
+        }
+
+        let userAction = function(linkdata) {
+
+        let xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+        // Typical action to be performed when the document is ready:
+        let response = xhttp.responseText;
+        //prueba
+        datajson = JSON.parse(response);
+        generarTabla(datajson);
+        }
+        };
+       xhttp.open("GET", `${linkdata}`, true);
+        xhttp.send();
+
+    }
+    userAction(this.getAttribute("linkdata"));
+    }
+    
+
+}
+customElements.define('tabla-wc',TablaDinamica);
+
+    
+</script>
+</html>

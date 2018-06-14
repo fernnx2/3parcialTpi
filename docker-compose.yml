@@ -1,0 +1,36 @@
+version: '2'
+services:
+    marmantenimiento:
+        image: 'microbd'
+        build: ./docker_mysql/.
+        container_name: 'contenedor_bd'
+        environment: 
+        - 'MYSQL_ROOT_PASSWORD=1234'
+        ports:
+        - '3306:3306'
+    paymantenimiento: 
+        image: 'microserver'
+        build: ./docker_payara/.   
+        container_name: 'contenedor_midleware'
+        depends_on:
+        - marmantenimiento
+        ports:
+        - '4848:4848'
+        - '8080:8080'
+        entrypoint:
+        - "./wait-for-mariadb.sh"
+        - "172.18.0.1:3306"
+        - "-t"
+        - "30"
+        - "--"
+        - "bin/asadmin"
+        - "start-domain"
+        - "-v"
+    frontend:
+        image: 'apacheserver'
+        build: ./frontend/.
+        container_name: 'contenedor_frontend'
+        depends_on:
+        - paymantenimiento
+        ports:
+        - '80:80'

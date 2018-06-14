@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mantenimiento">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./src/css/ed-grid.min.css">
+    <link rel="stylesheet" href="./src/css/estilos.css">
+    <link rel="stylesheet" href="./src/css/semantic.min.css">
+    <link rel="import" href="./components/TablaMantenimiento.html">
+    <link rel="stylesheet" href="./src/css/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="./src/components/menu.css">
+    <link rel="stylesheet" type="text/css" href="./src/components/input.css">
+    <link rel="stylesheet" type="text/css" href="./src/components/icon.css">
+    <link rel="stylesheet" type="text/css" href="./src/components/button.css">
+    <link rel="stylesheet" href="./src/components/table.min.css">
+    <link rel="stylesheet" href="./src/components/header.min.css">
+    <link rel="stylesheet" href="./src/components/item.min.css">
+    <link rel="stylesheet" href="./src/components/label.min.css">
+    <link rel="stylesheet" href="./src/components/menu.min.css">
+    <title>Document</title>
+</head>
+<body>
+        <script src="./src/js/angular.min.js" ></script>
+        <script src="./services/mantenimiento.js" type="module"></script>
+        <style>
+        ul {
+            list-style: disc;
+        }
+        </style>
+        <div class="ui stackable menu">
+                <div class="item">
+                  <img src="" >
+                </div>
+                <a class="item" href="./index.html">Cliente</a>
+                <a class="item" href="./solicitud.html">Solicitud</a>
+                <div class="menu ed-container">
+               
+                 
+                </div>
+              </div>
+
+        <div class="ed-container">
+                <div class="ed-item">
+                    <template>
+                        <style>
+
+                            table {
+                                font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+                                font-size: 15px;   
+                                width: 100%; text-align: left;    
+                                border-collapse: collapse; }
+                               
+                      
+                            th {     
+                                font-size: 18px;     
+                                font-weight: normal;     
+                                padding: 8px;     
+                                background: #b9c9fe;
+                                border-top: 4px solid #aabcfe;    
+                                border-bottom: 1px solid #fff; 
+                                color: #039; }
+                      
+                            td {    
+                                padding: 8px;     
+                                background: #e8edff;     
+                                border-bottom: 1px solid #fff;
+                                color: #669;    
+                                border-top: 1px solid transparent; }
+                      
+                            tr:hover td { 
+                                background: #d0dafd; 
+                                color: #339; }
+                        </style>
+                        
+                        <table class="ui ed-item celled table">
+                            <thead>
+                                <tr>
+                                    <td>Responsable</td>
+                                    <td>Detalle de Hardware</td>
+                                    <td>Detalle de Sotfware</td>
+                                    <td>Tipo de Sotfware</td>
+                                    
+                                    <td>Observaciones</td>
+                                    <td>fecha de Inicio</td>
+                                    <td>Tipo Mantenimiento</td>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <tr>
+                                        <td><slot name="responsable"></slot></td>
+                                        <td><slot name="detalleHardware"></slot></td>
+                                        <td><slot name="detalleSotfware"></slot></td>
+                                        <td><slot name="sotfware"></slot></td>
+                                        
+                                        <td><slot name="observaciones"></slot></td>
+                                        <td><slot name="fechaInicio"></slot></td>
+                                        <td><slot name="tipoProcedimiento"></slot></td>
+                                </tr>
+                                        
+                          </tbody>
+                        </table>
+                      </template>  
+                      
+                   <div class="ed-container" ng-controller="data">
+                        <div class="ui info message ed-item" id="mensaje">
+                                <div class="header">
+                                    Mantenimientos Terminados:
+                                </div>
+                        </div>
+                       <div class="ed-item">
+
+                            <tabla-data>
+                             <ul slot="responsable" ng-repeat="z in rest">
+             <li>{{z.detalleManteniminetoIdDetalleMantenimineto.ordenTrabajoIdOrdenTrabajo.solicitudIdSolicitud.responsable}}</li>
+                            </ul> 
+                                <ul slot="detalleHardware" ng-repeat="a in rest">
+                                   <li>{{a.detalleManteniminetoIdDetalleMantenimineto.detalleHardware}}</li>
+                               </ul>  
+                               <ul slot="detalleSotfware" ng-repeat="b in rest">
+                                    <li>{{b.detalleManteniminetoIdDetalleMantenimineto.detalleSotfware}}</li>
+                                </ul> 
+                                <ul slot="sotfware" ng-repeat="c in rest">
+                                        <li>{{c.detalleManteniminetoIdDetalleMantenimineto.sotfware}}</li>
+                                </ul>   
+                                <ul slot="observaciones" ng-repeat="d in rest">
+                                            <li>{{d.observaciones}}</li>
+                                </ul>
+                                <ul slot="fechaInicio" ng-repeat="e in rest">
+                                        <li>{{e.detalleManteniminetoIdDetalleMantenimineto.ordenTrabajoIdOrdenTrabajo.fechaInicio}}</li>
+                               </ul>
+                               <ul slot="tipoProcedimiento" ng-repeat="f in rest">
+                                    <li>{{f.procedimientoIdProcedimiento.tipoProcedimiento}}</li>
+                               </ul>       
+                           
+                            </tabla-data>
+                       </div>
+                   </div>   
+                  
+                </div>
+           </div>
+           <div class="ui  hidden divider"></div>
+
+           <div class="ed-container" ng-controller="noterminados">
+               <div class="ed-item">
+                    <div class="ui info message" id="mensaje">
+                            <div class="header">
+                                Mantenimientos No Terminados:
+                            </div>
+                        </div>
+               </div>
+
+               <div class="ed-item" >
+                   <div class="ui hidden divider"></div>
+                    <tabla-data>
+                            <ul slot="responsable" ng-repeat="z in rest">
+            <li>{{z.detalleManteniminetoIdDetalleMantenimineto.ordenTrabajoIdOrdenTrabajo.solicitudIdSolicitud.responsable}}</li>
+                           </ul> 
+                               <ul slot="detalleHardware" ng-repeat="a in rest">
+                                  <li>{{a.detalleManteniminetoIdDetalleMantenimineto.detalleHardware}}</li>
+                              </ul>  
+                              <ul slot="detalleSotfware" ng-repeat="b in rest">
+                                   <li>{{b.detalleManteniminetoIdDetalleMantenimineto.detalleSotfware}}</li>
+                               </ul> 
+                               <ul slot="sotfware" ng-repeat="c in rest">
+                                       <li>{{c.detalleManteniminetoIdDetalleMantenimineto.sotfware}}</li>
+                               </ul>   
+                               <ul slot="observaciones" ng-repeat="d in rest">
+                                           <li>{{d.observaciones}}</li>
+                               </ul>
+                               <ul slot="fechaInicio" ng-repeat="e in rest">
+                                       <li>{{e.detalleManteniminetoIdDetalleMantenimineto.ordenTrabajoIdOrdenTrabajo.fechaInicio}}</li>
+                              </ul>
+                              <ul slot="tipoProcedimiento" ng-repeat="f in rest">
+                                   <li>{{f.procedimientoIdProcedimiento.tipoProcedimiento}}</li>
+                              </ul> 
+                              
+                               
+                           </tabla-data>
+               </div>
+           </div>
+
+           
+            
+</body>
+</html>

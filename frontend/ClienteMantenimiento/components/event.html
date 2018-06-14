@@ -1,0 +1,54 @@
+<html>
+    <template>
+          
+    </template>
+    <script>
+    class Btn extends HTMLElement{
+
+        constructor(){
+            super();
+            this.setLink();
+            this.addEventListener('keyup', e =>{
+                let value = this.getLink();
+                document.querySelector('tabla-wc').setAttribute('linkdata',value);
+              
+            });
+
+            this.addEventListener('click', e =>{
+              console.log("click")
+            });
+        }
+
+        
+        
+        
+
+        connectedCallback(){
+            
+        let importDocument = document.currentScript.ownerDocument;
+        let shadowDom = this.attachShadow({mode:'open'});
+        let btn = importDocument.createElement('input');
+        let titulo = importDocument.createTextNode('Cargar recurso');
+        btn.appendChild(titulo);
+        let template = importDocument.querySelector('template').content;
+        template.appendChild(btn);
+        const clone = importDocument.querySelector('template').content;
+        shadowDom.appendChild(clone);
+
+         
+        
+        }
+
+        
+
+        setLink(){
+            return this.setAttribute("link","http://localhost:8080/MantenimientoTpi-1.0-SNAPSHOT/webresources/marca");
+        }
+        getLink(){
+            return this.getAttribute("link");
+        }
+
+    }
+    window.customElements.define('event-c',Btn);
+    </script>
+</html>

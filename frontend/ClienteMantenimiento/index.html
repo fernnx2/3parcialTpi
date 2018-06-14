@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="estadoSol">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./src/css/ed-grid.min.css">
+    <link rel="stylesheet" href="./src/css/estilos.css">
+    <link rel="stylesheet" href="./src/css/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="./src/components/menu.css">
+    <link rel="stylesheet" type="text/css" href="./src/components/input.css">
+    <link rel="stylesheet" type="text/css" href="./src/components/icon.css">
+    <link rel="stylesheet" type="text/css" href="./src/components/button.css">
+    <link rel="stylesheet" href="./src/components/table.min.css">
+    <link rel="stylesheet" href="./src/components/header.min.css">
+    <link rel="stylesheet" href="./src/components/item.min.css">
+    <link rel="stylesheet" href="./src/components/label.min.css">
+    <link rel="stylesheet" href="./src/components/menu.min.css">
+    
+    <!--- Scripts -->
+    <script src="./src/js/angular.min.js" ></script>
+      <script src="./src/js/jquery.min.js"></script>
+     
+  
+    <!--- Component JS -->
+   
+    
+    <!--Servicios-->  
+    <script src="./services/verificar.js" type="module"></script>
+    
+  <title>Inicio</title>
+
+
+  
+
+  </head>
+  <body class="" >
+      
+  <div class="ui stackable menu">
+    <div class="item">
+      <img src="" >
+    </div>
+    <a class="item" href="./index.html">Cliente</a>
+    <a class="item" href="./solicitud.html">Solicitud</a>
+    <a class="item" href="./Mantenimientos.html">Mantenimientos</a>
+    <div class="menu ed-container">
+      
+    <div class="item ">
+    <div class="ed-item m-40">
+        <div> <h5>Ver Estado Solicitud</h5></div>
+       </div>
+    <div class="ed-item m-60">
+    <div class="ui input left icon ">
+    <input id="ticket" placeholder="No Tiket..." type="number" value="">
+    <i class="search icon"></i>
+    </div>
+    </div>
+    
+    
+    </div>
+    <div class="item">
+            <div class="">
+                    <div class="ui labeled button">
+                     <button id="verificar" class="ui button blue">Verificar</button>
+                    </div>
+            </div>
+    </div>
+     
+    </div>
+  </div>
+ 
+
+  <div class="ed-container " >
+      <div class="ed-item">
+            <div class="ed-container" ng-controller="ver"> 
+                    <div class="ed-item">
+                    <table class="ui ed-item celled table">
+                      <div class="ui info message" id="mensaje">
+                        <div class="header">
+                            Estado  :{{datos}}
+                        </div>
+                      </div>
+                      <thead class="">
+                      <th>ticket</th>
+                      <th>Reponsable</th>
+                      <th>telefono</th>
+                      <th>fecha</th>
+                      <th>descripcion</th>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="s in datos2">
+                          <td>{{s.idSolicitud}}</td>
+                          <td>{{s.responsable}}</td>
+                          <td>{{s.telefono}}</td>
+                          <td>{{s.fecha}}</td>
+                          <td>{{s.descripcion}}</td>
+                        </tr>
+                     
+                      </tbody>
+                      
+                    </table>
+                    </div>
+                  </div>
+                  
+                      </section>
+                  </div>
+      </div>
+  </div>
+
+</body>
+
+
+</html>

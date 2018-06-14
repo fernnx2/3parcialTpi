@@ -1,0 +1,14 @@
+Integrantes :
+Menjivar Aguilera Rene Fernando
+Nelson Alejandro Leon Funes
+Lucero Garcia Jayson Amilcar
+
+
+Links para las pruebas 
+
+---para el midleware rest : http://localhost:8080/MantenimientoTpi-1.0-SNAPSHOT/webresources/marca
+
+---Para el frontend solo poner : localhots
+ 
+nota :
+el archivo clean.sh borra los contenedores

@@ -1,0 +1,26 @@
+
+    
+    <script>
+        
+        class TablaData extends HTMLElement{
+           
+            constructor(){
+                super();
+                this.shadowDom =this.attachShadow({mode:'open'});
+                
+            }
+
+            connectedCallback(){
+                let template = document.querySelector('template').content;
+                let clone = template.cloneNode(true);
+    
+                this.shadowDom.appendChild(clone);
+                
+                
+            }
+        }
+        customElements.define('tabla-data',TablaData);
+       
+    
+    
+    </script>

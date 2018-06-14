@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./lib/mocha.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="./lib/mocha.js"></script>
+    <script src="./lib/chai.js"></script>
+
+    <div id="mocha"></div>
+    <script>
+    mocha.setup("bdd");
+    var assert = chai.assert;
+    var expect = chai.expect;
+    </script>
+    
+    <script>
+    //Test ejemplo
+    describe("Saludo",function(){
+        it("Saludo",function(){
+            let saludo = "hola";
+            assert.isDefined(saludo);
+        })
+    });
+    </script>
+    <script>
+    //Test Solicitud Controller
+    
+    </script>
+
+    <script>mocha.run();</script>
+</body>
+</html>

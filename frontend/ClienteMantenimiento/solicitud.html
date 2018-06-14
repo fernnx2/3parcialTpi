@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./src/css/ed-grid.min.css">
+    <link rel="stylesheet" href="./src/css/semantic.min.css">
+    <link rel="import" href="./components/PostButton.html">
+    
+    <link rel="stylesheet" href="./src/css/estilos.css">
+    <link rel="stylesheet" type="text/css" href="./src/components/menu.css">
+    <link rel="stylesheet" type="text/css" href="./src/components/input.css">
+    <link rel="stylesheet" type="text/css" href="./src/components/icon.css">
+    <link rel="stylesheet" type="text/css" href="./src/components/button.css">
+    <link rel="stylesheet" href="./src/components/table.min.css">
+    <link rel="stylesheet" href="./src/components/header.min.css">
+    <link rel="stylesheet" href="./src/components/item.min.css">
+    <link rel="stylesheet" href="./src/components/label.min.css">
+    <link rel="stylesheet" href="./src/components/menu.min.css">
+    <link rel="stylesheet" href="./src/components/menu.min.css">
+   <title>Inicio</title>
+
+   
+  </head>
+  <body class="">
+      
+    <div class="ui stackable menu">
+        <div class="item">
+          <img src="" >
+        </div>
+        <a class="item" href="./index.html">Cliente</a>
+        <a class="item" href="./solicitud.html">Solicitud</a>
+        <div class="menu ed-container">
+    
+       
+        </div>
+      </div>
+
+    <style>
+    
+        #enviar {
+            margin-top: 5%;
+            color:white;
+            background: darkslategray;
+        }
+        h3{
+            color: blue;
+        }
+    </style> 
+
+    <script src="./services/post.js"></script>
+
+      <div class="ed-container m-50">
+       
+        <form class="ui form ed-item" >
+
+            <div class="ed-container">
+                <div class="ed-item">
+                    <center>
+                        <div class="ui message">
+                            <div class="header">
+                                Solicitar Mantenimiento de Equipos
+                            </div>
+                        </div>
+                    </center>
+                    
+                </div>
+            </div>
+            <div class="ed-container">
+                    <div class="field ed-item m-50 ">
+                            <label for="fecha">Fecha(*)</label>
+                            <input type="date" name="fecha" id="fecha" required="true">
+                    </div>
+                    <div class="field ed-item m-50">
+                            <label for="responsable">Reponsable(*)</label>
+                            <input type="text" name="responsable" id="responsable">
+                    </div>
+            </div>
+           <div class="ed-container">
+                <div class="field ed-item m-50">
+                        <label for="email">Email(*)</label>
+                        <input type="text" name="email" id="email">
+                </div>
+                <div class="field ed-item m-50">
+                        <label for="telefono">Telefono</label>
+                        <input type="number" name="telefono" id="telefono">
+                </div>
+           </div>
+            <div class="ed-container">
+                    <div class="field ed-item m-50">
+                            <label for="descripcion">Descripcion(*)</label>
+                            <input type="text" name="descripcion" id="descripcion">
+                    </div>
+                    <div class="field ed-item m-50">
+                            <label for="Equipo">Equipo(*)</label>
+                            <input type="number" name="equipo" id="equipo">
+                    </div>
+            </div>        
+            <div class="ed-container">
+                    <div class="field ed-item">
+                            <label for="tipoMantenimiento">Tipo Mantenimiento(*)</label>
+                            <input type="number" name="tipoMantenimiento" id="tipoMantenimiento">
+                    </div>
+            </div>
+           <div class="ed-container" id="nodo1">
+               <div class="ed-item" id="nodo2">
+                 <input class="ui button" id="enviar" onclick="getData()" value="Enviar Solicitud">
+               </div>
+                
+           </div>
+           
+                <div class="ui positive message">
+                    <div class="header" id="nTicket">
+                     Ticket : 
+                    </div>
+                   <p>Por favor guardar El Ticket!</p>
+                  </div>
+           
+           
+           
+        </form>
+    
+    </div>
+ 
+        
+          
+     
+
+  
+
+
+    
+</body>
+
+</html>

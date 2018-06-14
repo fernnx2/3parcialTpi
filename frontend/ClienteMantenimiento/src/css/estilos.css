@@ -1,0 +1,17 @@
+* {
+    margin: 0%, 0%, 0%, 0%;
+    padding: 0%, 0%, 0%, 0%;
+}
+
+.login {
+    margin-top: 10%;
+}
+
+body {
+    background: #f0eded;
+}
+
+a {
+    text-decoration: none !important;
+    color: rgba(70, 143, 156, 0.6);
+}
